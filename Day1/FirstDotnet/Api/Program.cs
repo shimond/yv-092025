@@ -1,8 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
-
-//Configurations and services
-
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
@@ -14,43 +12,15 @@ builder.Services.AddCors(options =>
     });
 });
 
-
+//builder.Services.AddSingleton<IOutputCacheStore, YVJsonFileCacheStore>();
+builder.Services.AddOutputCache(); /// save output IN-MEMORY
 
 var app = builder.Build();
 
 app.UseCors(); // listen to method options only
-
+app.UseOutputCache();
 app.UseStaticFiles();
-
-// middleware
-app.Use(async (context, next) => {
-    context.Response.StatusCode = 200;
-    await context.Response.WriteAsync("  Middleware 1 A  "); // 1
-    if (context.Request.Method.ToUpper() == "POST")
-    {
-        await next();
-    }
-    await context.Response.WriteAsync("  Middleware 1 B  "); // 6
-});
-
-//app.Use(async (context, next) => {
-//    await context.Response.WriteAsync("  Middleware 2 A  "); // 2
-//    await next();
-//    await context.Response.WriteAsync("  Middleware 2 B  "); //5
-//});
-// as middleware class
-app.UseLoggingMiddleware();
-
-
-app.Use(async (context, next) => {
-
-    await context.Response.WriteAsync("  Middleware 3 A  "); //3
-    await next();
-    await context.Response.WriteAsync("  Middleware 3 B  "); //4
-});
-
-
+app.MapControllers();
 app.Run();
 
 
-// Authentication

@@ -1,20 +1,96 @@
-@Api_HostAddress = https://localhost:7114
+﻿@Api_HostAddress = https://localhost:7114
 
+### Get all products (will be cached for 30 seconds with tags "products", "all")
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
 
-###
-GET {{Api_HostAddress}}
-accept: application/json
+### Get all products again (should return from cache - faster response)
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
 
-###
-POST {{Api_HostAddress}}
-accept: application/json
+### Create a new product - Example 1 (Electronics) - This will clear cache
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
 
-###
-DELETE {{Api_HostAddress}}/main/doIt/12313123123123123
-accept: application/json
+"iPhone 15 Pro Max - 256GB Space Black"
 
-###
-GET {{Api_HostAddress}}/home.html
-accept: application/json
+### Get all products after POST (cache cleared, will be slow again)
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
 
-###
+### Create a new product - Example 2 (Books)
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+"Clean Code: A Handbook of Agile Software Craftsmanship"
+
+### Create a new product - Example 3 (Clothing)
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+"Nike Air Max 270 Running Shoes - Size 10"
+
+### Get product by ID - Example 1 (will be cached for 60 seconds with tags "products", "single")
+GET {{Api_HostAddress}}/api/products/1
+Accept: application/json
+
+### Get product by ID - Example 2 (cached)
+GET {{Api_HostAddress}}/api/products/42
+Accept: application/json
+
+### Get same product by ID again (should return from cache)
+GET {{Api_HostAddress}}/api/products/1
+Accept: application/json
+
+### Get product by ID - Example 3 (Large ID)
+GET {{Api_HostAddress}}/api/products/999999
+Accept: application/json
+
+### Get product by ID - Example 4 (Edge case - ID 0)
+GET {{Api_HostAddress}}/api/products/0
+Accept: application/json
+
+### Cache Management Tests
+
+### Clear all product cache
+DELETE {{Api_HostAddress}}/api/products/cache/clear
+Accept: application/json
+
+### Clear cache by specific tag "all"
+DELETE {{Api_HostAddress}}/api/products/cache/clear/all
+Accept: application/json
+
+### Clear cache by specific tag "single"
+DELETE {{Api_HostAddress}}/api/products/cache/clear/single
+Accept: application/json
+
+### Performance Test - Get products after cache clear (should be slow)
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
+
+### Performance Test - Get products again (should be fast from cache)
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
+
+### Additional test cases for robustness
+
+### Get product by ID - Negative ID (should handle gracefully)
+GET {{Api_HostAddress}}/api/products/-1
+Accept: application/json
+
+### Create a product with special characters
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+"Samsung Galaxy S24 Ultra 🚀 - 512GB Titanium Gray (Brand New!)"
+
+### Create a product with a very long name
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+"Professional Heavy-Duty Industrial Strength Super Premium Quality Multi-Purpose Adjustable Ergonomic Tool Set with Lifetime Warranty"
