@@ -1,5 +1,24 @@
 var builder = WebApplication.CreateBuilder(args);
+
+//Configurations and services
+
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
+
 var app = builder.Build();
+
+app.UseCors(); // listen to method options only
 
 app.UseStaticFiles();
 
