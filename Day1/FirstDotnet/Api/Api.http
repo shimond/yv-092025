@@ -1,0 +1,14 @@
+@Api_HostAddress = https://localhost:7114
+
+
+###
+GET {{Api_HostAddress}}
+accept: application/json
+
+###
+POST {{Api_HostAddress}}
+accept: application/json
+
+###
+DELETE {{Api_HostAddress}}/main/doIt/12313123123123123
+accept: application/json
