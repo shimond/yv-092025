@@ -12,3 +12,9 @@ accept: application/json
 ###
 DELETE {{Api_HostAddress}}/main/doIt/12313123123123123
 accept: application/json
+
+###
+GET {{Api_HostAddress}}/home.html
+accept: application/json
+
+###
