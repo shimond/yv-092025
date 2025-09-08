@@ -7,3 +7,5 @@ global using Microsoft.AspNetCore.Builder;
 global using Api.Model.Dtos.Responses;
 global using Microsoft.AspNetCore.Http.HttpResults;
 global using Api.Apis;
+global using Api.Database;
+global using Microsoft.EntityFrameworkCore;

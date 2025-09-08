@@ -1,15 +1,10 @@
-﻿
-using Api.Contracts;
-using Api.Database;
-using Microsoft.EntityFrameworkCore;
-
-namespace Api.Services;
+﻿namespace Api.Services;
 
 public class EFProductsRepository(YvDataContext dataContext) : IProductsRepository
 {
-    public Task<List<ProductEntity>> GetAllProducts()
+    public async Task<List<ProductEntity>> GetAllProducts()
     {
-        var products = dataContext.Products.ToListAsync();
+        var products = await dataContext.Products.ToListAsync();
         return products;
     }
 
