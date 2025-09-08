@@ -1,15 +1,16 @@
 ﻿var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IProductsRepository, InMemoryProductsRepository>(); 
+builder.Services.AddDbContext<YvDataContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("yvDatabase")));
+//builder.Services.AddScoped<IProductsRepository, InMemoryProductsRepository>(); 
+builder.Services.AddScoped<IProductsRepository, EFProductsRepository>(); 
 
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-app.MapProductsApis();
+await app.Services.CreateScope().ServiceProvider.GetRequiredService<YvDataContext>().Database.EnsureCreatedAsync();
 
-//same as:
-//ProductsApis.MapProductsApis(app);
+app.MapProductsApis();
 
 app.Run();
 
