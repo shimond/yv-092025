@@ -1,6 +1,4 @@
-﻿using Api.Contracts;
-
-namespace Api.Middlewares;
+﻿namespace Api.Middlewares;
 
 public class LoggingMiddleware
 {

@@ -1,6 +1,4 @@
-﻿using Api.Model;
-
-namespace Api.Contracts;
+﻿namespace Api.Contracts;
 
 public interface ICategoriesRepository
 {

@@ -1,6 +1,4 @@
-﻿using Api.Contracts;
-using Api.Model;
-
+﻿
 namespace Api.Services;
 
 public class InMemoryProductsRepository : IProductsRepository
