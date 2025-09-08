@@ -1,0 +1,11 @@
+{
+  "GET\u001EHTTPS\u001ELOCALHOST:7114/API/PRODUCTS\u001EQ\u001E*=": {
+    "data": "Ar7048n18fruCADIAQI7AT5hcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04QQE6VGh1LCAwNCBTZXAgMjAyNSAwODo0NTowNiBHTVQiWyJQcm9kdWN0MSIsIlByb2R1Y3QyIiwiUHJvZHVjdDMiXQ==",
+    "tags": [
+      "products",
+      "all"
+    ],
+    "expiresAt": "2025-09-04T08:45:50.1923376Z",
+    "createdAt": "2025-09-04T08:45:20.5932704Z"
+  }
+}
