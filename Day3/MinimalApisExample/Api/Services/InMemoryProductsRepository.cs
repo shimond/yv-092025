@@ -1,13 +1,18 @@
 ﻿
+using Api.Model.Config;
+using Microsoft.Extensions.Options;
+
 namespace Api.Services;
 
 public class InMemoryProductsRepository : IProductsRepository
 {
-    public InMemoryProductsRepository()
-    {
-            
-    }
 
+    public InMemoryProductsRepository(IOptionsMonitor<YVCollectionConfig> options)
+    {
+        options.OnChange((x) => { 
+          //this prompt = x.Prompt
+        });
+    }
     public Task<List<ProductEntity>> GetAllProducts()
     {
         var products = new List<ProductEntity>

@@ -14,6 +14,30 @@ GET {{Api_HostAddress}}/api/config
 Accept: application/json
 
 ###
+GET {{Api_HostAddress}}/api/config/myconfigNested
+Accept: application/json
+
+
+####
+GET {{Api_HostAddress}}/api/config/myConfigComplex
+Accept: application/json
+
+####
+
+GET {{Api_HostAddress}}/api/config/myConfigComplexSnapshot
+Accept: application/json
+
+####
+
 GET http://localhost:5000/api/config
 Accept: application/json
- 
+
+####
+
+POST {{Api_HostAddress}}/api/orders/UseMoreThan1HttpClient
+Accept: application/js
+
+###
+POST {{Api_HostAddress}}/api/orders/CompleteOrder
+
+###
