@@ -1,0 +1,19 @@
+﻿@Api_HostAddress = https://localhost:7114
+
+### Get all products (will be cached for 30 seconds with tags "products", "all")
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
+###
+
+GET {{Api_HostAddress}}/api/products/458
+Accept: application/json
+
+
+###
+GET {{Api_HostAddress}}/api/config
+Accept: application/json
+
+###
+GET http://localhost:5000/api/config
+Accept: application/json
+ 

@@ -1,0 +1,11 @@
+﻿global using Api.Middlewares;
+global using Api.Services;
+global using Microsoft.AspNetCore.OutputCaching;
+global using Api.Contracts;
+global using Api.Model;
+global using Microsoft.AspNetCore.Builder;
+global using Api.Model.Dtos.Responses;
+global using Microsoft.AspNetCore.Http.HttpResults;
+global using Api.Apis;
+global using Api.Database;
+global using Microsoft.EntityFrameworkCore;
